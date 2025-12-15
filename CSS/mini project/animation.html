@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Bounce Between Bars</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: aliceblue;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      border: 2px solid hotpink;
+    }
+
+    .bar {
+      position: absolute;
+      width: 200px;
+      height: 20px;
+      background: blueviolet;
+      border-radius: 10px;
+    }
+
+    .bar.top {
+      top: 20px;
+      animation: slideRight 4s linear infinite alternate;
+    }
+
+    .bar.bottom {
+      bottom: 20px;
+      animation: slideLeft 4s linear infinite alternate;
+    }
+
+    .ball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: crimson;
+      border-radius: 50%;
+      top: 60px;
+      left: 100px;
+    }
+
+    @keyframes slideRight {
+      from { left: 0; }
+      to { left: calc(100% - 200px); }
+    }
+
+    @keyframes slideLeft {
+      from { left: calc(100% - 200px); }
+      to { left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bar top"></div>
+    <div class="bar bottom"></div>
+    <div class="ball"></div>
+  </div>
+
+  <script>
+    const ball = document.querySelector(".ball");
+    const container = document.querySelector(".container");
+
+    let dx = 4;  // horizontal speed
+    let dy = 4;  // vertical speed
+
+    function moveBall() {
+      const ballRect = ball.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      const topBar = document.querySelector(".bar.top").getBoundingClientRect();
+      const bottomBar = document.querySelector(".bar.bottom").getBoundingClientRect();
+
+      // Current position
+      let x = ball.offsetLeft;
+      let y = ball.offsetTop;
+
+      x += dx;
+      y += dy;
+
+      // Collision with left/right walls
+      if (x <= 0 || x + ball.offsetWidth >= containerRect.width) {
+        dx *= -1;
+      }
+
+      // Collision with top bar
+      if (
+        y <= topBar.bottom - containerRect.top &&
+        x + ball.offsetWidth >= topBar.left - containerRect.left &&
+        x <= topBar.right - containerRect.left
+      ) {
+        dy = Math.abs(dy); // move down
+      }
+
+      // Collision with bottom bar
+      if (
+        y + ball.offsetHeight >= bottomBar.top - containerRect.top &&
+        x + ball.offsetWidth >= bottomBar.left - containerRect.left &&
+        x <= bottomBar.right - containerRect.left
+      ) {
+        dy = -Math.abs(dy); // move up
+      }
+
+      // Apply position
+      ball.style.left = x + "px";
+      ball.style.top = y + "px";
+
+      requestAnimationFrame(moveBall);
+    }
+
+    moveBall();
+  </script>
+</body>
+</html>

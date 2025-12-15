@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Water Warrior Challenge</title>
+  <style>
+    :root{--bg:#0b3b5a;--card:#fff;--accent:#2db7c5}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;
+         background:linear-gradient(180deg,#063449 0,#0b3b5a 100%);
+         color:#fff;display:flex;align-items:center;justify-content:center;
+         min-height:100vh}
+    .wrap{width:920px;background:rgba(255,255,255,0.04);
+          border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+    header{display:flex;align-items:center;gap:12px}
+    h1{margin:0;font-size:20px}
+    .top{display:flex;gap:12px;align-items:center}
+    .panel{display:flex;gap:12px;margin-top:14px}
+    .choices{width:320px;background:rgba(255,255,255,0.03);
+             padding:14px;border-radius:10px}
+    button.choice{display:block;width:100%;margin:8px 0;padding:10px;
+      border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent),#0aa6b0);
+      color:#023;cursor:pointer;font-weight:600}
+    .scene{flex:1;background:linear-gradient(180deg,#8ad8ff 0,#7ed0ff 40%,#5cc2ff 100%);
+           border-radius:10px;padding:10px;position:relative;overflow:hidden}
+    .river{position:absolute;left:0;right:0;bottom:0;height:55%;
+           background:linear-gradient(180deg,#2aa3c4,#106a7b);
+           border-top-left-radius:60px;border-top-right-radius:60px;
+           transition:all 800ms ease}
+    .river.polluted{background:linear-gradient(180deg,#6b4b3b,#38261b)}
+    .bank{position:absolute;left:20px;top:20px}
+    .fish{position:absolute;left:60%;top:60%;transform:translate(-50%,-50%);
+          font-size:22px;opacity:1;transition:opacity 900ms}
+    .fish.hide{opacity:0}
+    .trash{position:absolute;left:70%;top:65%;transform:translate(-50%,-50%);
+           opacity:0;transition:opacity 900ms}
+    .trash.show{opacity:1}
+    .score{font-weight:700}
+    footer{margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+    .actions{display:flex;gap:6px}
+    small{opacity:0.85}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="top">
+        <img src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
+            <circle cx='20' cy='20' r='18' fill='%2300a3b5'/>
+          </svg>" alt="logo">
+        <div>
+          <h1>Water Warrior Challenge</h1>
+          <small>Choose wisely — restore the river!</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="panel">
+      <div class="choices">
+        <div><strong>Scenario:</strong> The city has run-off pollution and poor water education.</div>
+        <p style="margin:8px 0 6px 0">Pick an action:</p>
+        <button class="choice" id="plant">Build new filtration plant (+3)</button>
+        <button class="choice" id="education">Public education campaign (+2)</button>
+        <button class="choice" id="fines">Stricter industrial fines (+2)</button>
+        <button class="choice" id="nothing">Do nothing (-3)</button>
+        <hr style="opacity:.06;margin:8px 0">
+        <div>Score: <span class="score" id="score">0</span></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:8px">
+          Tips: Combine infrastructure + education for best result.
+        </div>
+      </div>
+
+      <div class="scene">
+        <div class="bank">🏞 City Park</div>
+        <div class="river" id="river"></div>
+        <div class="fish" id="fish">🐟🐟🐟</div>
+        <div class="trash" id="trash">🗑🛢🧴</div>
+      </div>
+    </div>
+
+    <footer>
+      <div><small>Progress shows environmental health — green is good.</small></div>
+      <div class="actions">
+        <button id="reset" class="choice" style="width:auto;padding:8px 12px">Reset</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const scoreEl=document.getElementById('score');
+      const river=document.getElementById('river');
+      const fish=document.getElementById('fish');
+      const trash=document.getElementById('trash');
+      let score=0;
+
+      function updateScene(){
+        scoreEl.textContent=score;
+        if(score>=3){
+          river.classList.remove('polluted');
+          fish.classList.remove('hide');
+          trash.classList.remove('show');
+        } else if(score<=-2){
+          river.classList.add('polluted');
+          fish.classList.add('hide');
+          trash.classList.add('show');
+        } else {
+          river.classList.remove('polluted');
+          fish.classList.remove('hide');
+          trash.classList.remove('show');
+          // subtle dirt when neutral
+          river.style.filter = score<1? 'saturate(.9) brightness(.95)':'none';
+        }
+      }
+
+      document.getElementById('plant').addEventListener('click',()=>{score+=3;updateScene();});
+      document.getElementById('education').addEventListener('click',()=>{score+=2;updateScene();});
+      document.getElementById('fines').addEventListener('click',()=>{score+=2;updateScene();});
+      document.getElementById('nothing').addEventListener('click',()=>{score-=3;updateScene();});
+      document.getElementById('reset').addEventListener('click',()=>{score=0;updateScene();});
+
+      // initial
+      updateScene();
+    })();
+  </script>
+</body>
+</html>

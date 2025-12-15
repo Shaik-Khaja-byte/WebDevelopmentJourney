@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>semantics in tables</title>
+</head>
+<body>
+    <table border="black">
+        <thead>
+            <caption>Food Menu</caption>
+            <tr>
+                <th rowspan="2">Items</th>
+                <th colspan="2">Price</th>
+            </tr>
+            <tr>
+                <th>IND</th>
+                <th>USD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Frooti</td>
+                <td>10</td>
+                <td>0.17</td>
+            </tr>
+            <tr>
+                <td>Samosa</td>
+                <td>12</td>
+                <td>0.19</td>
+            </tr>
+            <tr>
+                <td>Chips</td>
+                <td>20</td>
+                <td>0.20</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="black">
+        <thead>
+            <caption>A test tables with merged cells</caption>
+            <tr>
+                <td rowspan="2"></td>
+                <td colspan="2"> Average</td>
+                <td rowspan="2"> Red Eyes</td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td>Weight</td>
+            </tr>
+        </thead>
+      
+        <tbody>
+             <tr>
+                <td>Males</td>
+                <td>1.9</td>
+                <td>0.009</td>
+                <td>40%</td>
+             </tr>
+            <tr>
+                <td>Females</td>
+                <td>1.2</td>
+                <td>0.002</td>
+                <td>45%</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

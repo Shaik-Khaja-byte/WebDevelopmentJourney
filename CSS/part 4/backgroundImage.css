@@ -1,0 +1,10 @@
+div{
+    height: 500px;
+    width: 600px;
+    background-color: skyblue;
+    margin-top: 50px;
+    margin: auto;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    color: aliceblue;
+}

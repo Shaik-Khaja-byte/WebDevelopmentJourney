@@ -1,0 +1,41 @@
+/* Qs1.Create a box using div. Set
+-Its height to 150px, width to 300px and the background color to grey.
+-Border to a 5px, black, dotted border.
+-A top margin of 20px.
+-A right margin of 1em.
+-A bottom margin of 40px.
+-A left margin of 2em.
+-Padding on all sides of 1em.  */
+
+/* div{
+    height: 150px;
+    width: 300px;
+    background-color: grey;
+    border: 5px dotted black;
+    margin-top: 20px;
+    margin-right: 1em;
+    margin-bottom: 40px;
+    margin-left: 2em;
+    padding: 1em;
+} */
+
+/* Q2: Create 3 <div> elements with the following properties:
+Height: 100px
+Width: 100px
+Background color: pink
+Border: 2px solid black
+Shape: circle
+Place all 3 <div> elements in a single horizontal line */
+
+/* div{
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: inline-block;
+} */
+
+li{
+    display: inline;
+}

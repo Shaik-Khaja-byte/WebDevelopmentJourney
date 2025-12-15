@@ -1,0 +1,30 @@
+h1{
+    background-color: yellow;
+}
+
+@media(width: 500px) {
+    h1{
+        background-color: blueviolet;
+        color: white;
+    }
+}
+
+/* @media(min-width: 700px){
+    h1{
+        background-color: aquamarine;
+    }
+} */
+
+@media(max-width: 200px){
+    h1{
+        background-color: blue;
+        color: white;
+    }
+}
+
+@media(orientation: landscape){
+    h1{
+        background-color: hotpink;
+        color: black;
+    }
+}

@@ -1,0 +1,36 @@
+.id{
+    height: 100px;
+    width: 300px;
+    background-color: palevioletred;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+
+    /* animation-name: widthAnimation;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; */
+
+    animation: fontAnimation 2s ease-in-out infinite alternate;
+}
+
+@keyframes fontAnimation {
+    from {font-size: 5px;
+    width: 10px;
+background-color: blue;}
+    to {font-size: 40px;
+    width: 500px;
+background-color: green;}
+}
+
+@keyframes colorAnimation {
+    from{background-color: blue;}
+    to{background-color: green;}
+}
+
+@keyframes widthAnimation {
+    from{width: 10px;}
+    to{width: 500px;}
+}

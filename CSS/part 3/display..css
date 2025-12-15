@@ -1,0 +1,27 @@
+/* h1{
+    display: inline;
+    background-color: aqua;
+}
+
+span{
+    display: block;
+    background-color: beige;
+} */
+
+/* span{
+    background-color: hotpink;
+    border: 2px dashed;
+    height: 50px;
+    width: 50px;
+    padding: 50px;
+} 
+*/
+
+div{
+    height: 200px;
+    width: 200px;
+    background-color: hotpink;
+    margin: 10px;
+    border: 2px dotted black;
+    display: inline-block;
+}

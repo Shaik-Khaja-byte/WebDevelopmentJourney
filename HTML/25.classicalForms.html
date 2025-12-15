@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Forms</title>
+</head>
+<body>
+
+    <button>outside</button>
+
+    <form action="/14.potifolioHW.html">
+
+        <button>before</button>
+        <div>
+            <label for="username"> Enter Username : </label>
+            <input type="text" id="username" placeholder="enter username">
+        </div>
+
+        <div>
+            <button>submit</button>
+        </div>
+
+        <!--both the buttons will lead to the submission because  it is written inside the form, if you write
+        outside... no  action is performed because it's not defined-->
+
+        <!-- type attribute in button-->
+
+        <button type="button"> just a button</button>
+        <button type="submit"> submit</button>
+        <button type="reset"> reset</button>
+
+       <div>
+         <p>we can also display button using input element too</p>
+
+        <input type="submit">
+        <input type="button" value="click me">
+       </div>
+    </form>
+
+    <hr>
+
+    <form action="https://www.youtube.com/results">
+        <div>
+            <label for="username"> Youtube search</label>
+            <input type="text" placeholder="search annything..." id="username" name="search_query">
+            <button>Search</button>
+        </div>
+    </form>
+</body>
+</html>
