@@ -1,0 +1,12 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "This package.json is used for the impoer and export demo of the files",
+  "main": "7_import.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shaik Khaja",
+  "license": "ISC",
+  "type" : "module"
+}
